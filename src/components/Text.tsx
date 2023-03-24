@@ -1,9 +1,23 @@
 import React from "react";
 
+type Rainbow =
+  | "red"
+  | "orange"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "indigo"
+  | "violet";
+
 type TextProps<C extends React.ElementType> = {
   as?: C;
-  children: React.ReactNode;
-} & React.ComponentPropsWithoutRef<C>;
+  color?: Rainbow | "black";
+};
+
+type Props<C extends React.ElementType> = React.PropsWithChildren<
+  TextProps<C>
+> &
+  Omit<React.ComponentPropsWithoutRef<C>, keyof TextProps<C>>;
 
 // The ComponentPropsWithoutRef type can be used to grab all the native attributes of an HTML element as the props type of your component.
 
@@ -12,7 +26,7 @@ export const Text = <C extends React.ElementType = "span">({
   as,
   children,
   ...restProps
-}: TextProps<C>) => {
+}: Props<C>) => {
   const Component = as || "span";
   return <Component {...restProps}>{children}</Component>;
 };
