@@ -25,10 +25,18 @@ type Props<C extends React.ElementType> = React.PropsWithChildren<
 export const Text = <C extends React.ElementType = "span">({
   as,
   children,
+  color,
+  style,
   ...restProps
 }: Props<C>) => {
   const Component = as || "span";
-  return <Component {...restProps}>{children}</Component>;
+  const InternalStyles = color ? { style: { ...style, color } } : {};
+
+  return (
+    <Component {...restProps} {...InternalStyles}>
+      {children}
+    </Component>
+  );
 };
 
 //this {...restProps} is needed so that the href actually works. Without the spread, the href doesn't render. The a tag renders, but not the attribute.

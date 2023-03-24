@@ -15,7 +15,9 @@ function App() {
   return (
     <div className="App">
       <Text as="h1"> Hello world</Text>
-      <Text as="h2"> Here I am</Text>
+      <Text as="h2" color="violet" style={{ backgroundColor: "black" }}>
+        Here I am
+      </Text>
       <Text as="a" href="https://google.com">
         Google
       </Text>
