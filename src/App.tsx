@@ -26,7 +26,7 @@ function App() {
         <Text>I am a regular text component</Text>
         <Text as="h3">I am an unstyled heading</Text>
         <Text as="small">I am small text</Text>
-        <Text as="em">I am emphasized text</Text>
+        <Text as="em">I am emphasized</Text>
       </div>
 
       <SectionTitle title="Buttons" />
