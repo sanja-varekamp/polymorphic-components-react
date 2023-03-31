@@ -23,7 +23,7 @@ const getVariant = (variant: ButtonVariant) => {
     case "secondary":
       return "button-secondary";
     default:
-      return "primary";
+      return;
   }
 };
 
@@ -33,7 +33,7 @@ export const Button = <C extends React.ElementType>({
   as,
   ...restProps
 }: ButtonProps<C>) => {
-  const buttonStyles = clsx("button-primary", getVariant(variant), "className");
+  const buttonStyles = clsx("button-primary", getVariant(variant));
   const Component = as || "button";
   return (
     <Component className={buttonStyles} {...restProps}>
