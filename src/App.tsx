@@ -1,30 +1,50 @@
 import React from "react";
 import "./App.css";
-import { Text } from "./components/Text";
+import { Button } from "./components/Button/Button";
+import { ExampleText } from "./components/ExampleText";
+import SectionTitle from "./components/SectionTitle/SectionTitle";
+import { Text } from "./components/Text/Text";
 
 // because of the typing we used, we can also pass a custom component to 'as', one that we create, like the one underneath
-const Emphasis = ({ children }: { children: React.ReactText }) => {
+const BoldText = ({ children }: { children: React.ReactText }) => {
   return (
-    <em style={{ background: "yellow", color: "black", fontSize: "40px" }}>
+    <b style={{ background: "teal", color: "black", fontSize: "25px" }}>
       {children}
-    </em>
+    </b>
   );
 };
 
 function App() {
   return (
-    <div className="App">
-      <Text as="h1"> Hello world</Text>
-      <Text as="h2" color="violet" style={{ backgroundColor: "black" }}>
-        Here I am
-      </Text>
-      <Text as="a" href="https://google.com">
-        Google
-      </Text>
-      <Text>This is a text with no 'as'</Text>
+    <>
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+        Polymorphic components app
+      </h1>
 
-      <Text as={Emphasis}>This is important. You are awesome!!</Text>
-    </div>
+      <SectionTitle title="Text" />
+      <div className="flex flex-col">
+        <Text>I am a regular text component</Text>
+        <Text as="h3">I am an unstyled heading</Text>
+        <Text as="small">I am small text</Text>
+        <Text as="em">I am emphasized text</Text>
+      </div>
+
+      <SectionTitle title="Buttons" />
+      <div>
+        <Button type="button">Button</Button>
+        <Button variant="secondary" type="button">
+          Outlined
+        </Button>
+        <Button variant="link" as="a" href="https://google.com">
+          Link to google
+        </Button>
+      </div>
+
+      <SectionTitle title="Custom component" />
+      <ExampleText as={BoldText}>
+        Component passed as text component
+      </ExampleText>
+    </>
   );
 }
 
