@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function SectionTitle({ title }: Props) {
-  return <h2 className="text-3xl font-extrabold">{title}</h2>;
+  return <h2 className="text-3xl font-extrabold mt-6 mb-3">{title}</h2>;
 }
